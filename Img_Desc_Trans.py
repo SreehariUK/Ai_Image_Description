@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import google.generativeai as genai
-import pyttsx3
+from gtts import gTTS
 from deep_translator import GoogleTranslator
 
 # Streamlit app
@@ -12,15 +12,10 @@ st.write("Upload an image and enter a prompt. The model will generate a descript
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 user_prompt = st.text_input("Enter your prompt:", value="")
 
-# Function to generate audio
-def generate_audio(i):
-    audio = pyttsx3.init()
-    audio.setProperty('rate', 150)
-    audio.setProperty('volume', 1.0)
-    voices = audio.getProperty('voices')
-    audio.setProperty('voice', voices[i].id)
-    audio.save_to_file(st.session_state.description, "1.mp3")
-    audio.runAndWait()
+# Function to generate audio using gTTS
+def generate_audio(text, lang='en'):
+    tts = gTTS(text=text, lang=lang)
+    tts.save("output.mp3")
 
 # Function to translate description to another language
 def change_language(language):
@@ -59,8 +54,8 @@ else:
 # Voice selection and audio generation
 voice_choice = st.selectbox("Choose a voice:", ["None", "Male", "Female"])
 if voice_choice != "None":
-    generate_audio(0 if voice_choice == "Male" else 1)
-    st.audio("1.mp3", format='audio/mp3')
+    generate_audio(st.session_state.description)
+    st.audio("output.mp3", format='audio/mp3')
 
 # Language translation selection
 lang_choice = st.selectbox("Choose a Language to Translate:", ["None", "English", "Hindi", "Odia", "Telugu", "Tamil", "Punjabi", "Malayalam", "Marathi"])
