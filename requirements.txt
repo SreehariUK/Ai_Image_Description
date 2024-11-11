@@ -1,0 +1,5 @@
+streamlit
+Pillow
+google-generativeai @ git+https://github.com/google/generative-ai-python.git
+pyttsx3
+deep-translator
