@@ -58,8 +58,8 @@ if voice_choice != "None":
     st.audio("output.mp3", format='audio/mp3')
 
 # Language translation selection
-lang_choice = st.selectbox("Choose a Language to Translate:", ["None", "English", "Hindi", "Odia", "Telugu", "Tamil", "Punjabi", "Malayalam", "Marathi"])
+lang_choice = st.selectbox("Choose a Language to Translate:", ["None", "English", "Hindi", "Odia", "Telugu", "Tamil", "Punjabi", "Malayalam", "Marathi","Kannada"]
 if lang_choice != "None":
-    lang_code = {'English': 'en', 'Hindi': 'hi', 'Odia': 'or', 'Telugu': 'te', 'Tamil': 'ta', 'Punjabi': 'pa', 'Malayalam': 'ml', 'Marathi': 'mr'}[lang_choice]
+    lang_code = {'English': 'en', 'Hindi': 'hi', 'Odia': 'or', 'Telugu': 'te', 'Tamil': 'ta', 'Punjabi': 'pa', 'Malayalam': 'ml', 'Marathi': 'mr','Kannada': 'kn'}[lang_choice]
     translated_text = change_language(lang_code)
     st.write(translated_text)
