@@ -34,7 +34,7 @@ if uploaded_file and user_prompt:
     try:
         if st.session_state.description == "":
             # Configure API with your key
-            api_key = "AIzaSyACJaIWuQ6M55GBOKFas04Qs1ogsiBbV6A"  # Replace with your actual API key
+            api_key = ""  # Replace with your actual API key
             genai.configure(api_key=api_key)
 
             # Initialize the model
